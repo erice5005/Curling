@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"net/http"
 	"reflect"
 	"strings"
@@ -85,7 +84,6 @@ func (r Request) Do(dataset interface{}) ([]byte, map[string][]string, error) {
 		headers[name] = value
 	}
 
-	log.Printf("Body: %v\n", string(body))
 	return body, headers, nil
 }
 
