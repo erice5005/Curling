@@ -5,4 +5,4 @@ Wrapper for http requests. The aim is to reduce the code needed for a http reque
 `go get github.com/erice5005/Curling`
 
 ## Usage
-See [examples](/examples)
+See [example](/example)
