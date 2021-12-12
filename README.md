@@ -6,3 +6,12 @@ Wrapper for http requests. The aim is to reduce the code needed for a http reque
 
 ## Usage
 See [example](/example)
+
+## Supports
+`GET`, `POST`, `PUT`, `PATCH`
+
+
+### TODO
+- [ ] Benchmarking
+- [ ] More Methods
+- [ ] Concurrent Execution
