@@ -139,3 +139,16 @@ func Test_Request(t *testing.T) {
 	}
 
 }
+
+func BenchmarkSingleGet(b *testing.B) {
+	svr := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
+		fmt.Fprint(rw, nil)
+	}))
+	defer svr.Close()
+	for n := 0; n < b.N; n++ {
+		_, _, err := New(GET, svr.URL, nil).Do(nil)
+		if err != nil {
+			panic(err)
+		}
+	}
+}
