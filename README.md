@@ -12,6 +12,6 @@ See [example](/example)
 
 
 ### TODO
-- [ ] Benchmarking
+- [x] Benchmarking
 - [ ] More Methods
-- [ ] Concurrent Execution
+- [x] Concurrent Execution
