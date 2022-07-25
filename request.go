@@ -55,7 +55,7 @@ func New(method Method, targetURL string, headers map[string]string) Request {
 func (r Request) Do(dataset interface{}) ([]byte, map[string][]string, error) {
 	var postbody io.Reader
 	var err error
-	if r.Method == POST {
+	if r.Method == POST || r.Method == PUT {
 		postbody, err = getReaderForType(dataset)
 		if err != nil {
 			return nil, nil, fmt.Errorf("error setting postbody: %w", err)
