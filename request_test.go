@@ -50,7 +50,7 @@ func Test_ReaderForType(t *testing.T) {
 			// Expected err, didn't get one
 			if tt.expectErr {
 				if err == nil {
-					t.Errorf("expected err, didn't get one: %w", err)
+					t.Errorf("expected err, didn't get one: %v", err)
 					t.Fail()
 				} else {
 					// expected err, got err, end successfully
@@ -58,7 +58,7 @@ func Test_ReaderForType(t *testing.T) {
 				}
 			} else {
 				if err != nil {
-					t.Errorf("got err when none expected: %w", err)
+					t.Errorf("got err when none expected: %v", err)
 					t.Fail()
 				}
 			}
@@ -127,7 +127,7 @@ func Test_Request(t *testing.T) {
 
 			got, _, err := New(GET, svr.URL, nil).Do(tt.expected)
 			if err != nil {
-				t.Errorf("error running request: %w", err)
+				t.Errorf("error running request: %v", err)
 				t.Fail()
 			}
 
