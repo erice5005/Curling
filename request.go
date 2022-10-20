@@ -57,8 +57,9 @@ func New(method Method, targetURL string, headers map[string]string) Request {
 	return r
 }
 
-func (r *Request) ToggleInsecure() {
+func (r Request) ToggleInsecure() Request {
 	r.insecure = !r.insecure
+	return r
 }
 
 // Do ... main execution of the package. Can accept either JSON or
