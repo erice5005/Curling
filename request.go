@@ -14,10 +14,11 @@ import (
 type Method int64
 
 const (
-	GET   Method = 0
-	POST  Method = 1
-	PUT   Method = 2
-	PATCH Method = 3
+	GET    Method = 0
+	POST   Method = 1
+	PUT    Method = 2
+	PATCH  Method = 3
+	DELETE Method = 4
 )
 
 func (m Method) String() string {
@@ -30,6 +31,8 @@ func (m Method) String() string {
 		return "PUT"
 	case PATCH:
 		return "PATCH"
+	case DELETE:
+		return "DELETE"
 	}
 
 	return ""
