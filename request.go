@@ -2,6 +2,7 @@ package curling
 
 import (
 	"bytes"
+	"crypto/tls"
 	"encoding/json"
 	"fmt"
 	"io"
@@ -42,6 +43,7 @@ type Request struct {
 	Method    Method
 	TargetURL string
 	Headers   map[string]string
+	insecure  bool
 }
 
 func New(method Method, targetURL string, headers map[string]string) Request {
@@ -49,9 +51,14 @@ func New(method Method, targetURL string, headers map[string]string) Request {
 		Method:    method,
 		TargetURL: targetURL,
 		Headers:   headers,
+		insecure:  false,
 	}
 
 	return r
+}
+
+func (r *Request) ToggleInsecure() {
+	r.insecure = !r.insecure
 }
 
 // Do ... main execution of the package. Can accept either JSON or
@@ -71,6 +78,10 @@ func (r Request) Do(dataset interface{}) ([]byte, map[string][]string, error) {
 	}
 	for key, val := range r.Headers {
 		req.Header.Add(key, val)
+	}
+
+	if r.insecure {
+		http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	}
 
 	res, err := http.DefaultClient.Do(req)
